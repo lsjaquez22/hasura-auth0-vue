@@ -37,7 +37,7 @@
       <v-btn text router :to="{ path: '/vacantes' }">
         <span class="mr-2">Vacantes</span>
       </v-btn>
-      <v-btn text router :to="{ path: '/contactos' }">
+      <v-btn text router :to="{ path: '/contacto' }">
         <span class="mr-2">Contacto</span>
       </v-btn>
       <v-btn text>

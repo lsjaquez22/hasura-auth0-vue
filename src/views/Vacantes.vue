@@ -204,35 +204,6 @@
     components: {
       Footer,
     },
-    data() {
-      return {
-        items: [
-          {
-            src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
-          },
-          {
-            src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
-          },
-          {
-            src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
-          },
-          {
-            src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
-          },
-        ],
-        trailers: [
-          { type: "Caja Seca", image: "" },
-          { type: "Plataforma", image: "" },
-          { type: "Low Boy", image: "" },
-          { type: "Caja Refrigerada", image: "" },
-        ],
-        jobs: [
-          { type: "Ventas", image: "", number: 30 },
-          { type: "Operadores", image: "", number: 30 },
-          { type: "Mantenimiento", image: "", number: 30 },
-        ],
-      };
-    },
   };
 </script>
 
