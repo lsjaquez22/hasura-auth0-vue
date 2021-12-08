@@ -12,8 +12,7 @@
                 <v-col cols="12" sm="5" class="py-0">
                   <p class="font-weight-bold ma-0">Nombre Completo*</p>
                   <v-text-field
-                    v-model="name"
-                    :counter="10"
+                    v-model="completeName"
                     :rules="nameRules"
                     outlined
                     dense
@@ -37,9 +36,9 @@
                 <v-col cols="12" sm="5" class="py-0">
                   <p class="font-weight-bold ma-0">Numero de celular*</p>
                   <v-text-field
-                    v-model="name"
+                    v-model="cellphone_number"
                     :counter="10"
-                    :rules="nameRules"
+                    :rules="cellphoneRules"
                     outlined
                     dense
                     required
@@ -47,7 +46,11 @@
                 </v-col>
                 <v-col cols="12" sm="5" class="py-0">
                   <p class="font-weight-bold ma-0">Numero Telefonico</p>
-                  <v-text-field v-model="email" outlined dense></v-text-field>
+                  <v-text-field
+                    v-model="phone_number"
+                    outlined
+                    dense
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="1" class="py-0"></v-col>
               </v-row>
@@ -56,8 +59,8 @@
                 <v-col cols="12" sm="5" class="py-0">
                   <p class="font-weight-bold ma-0">Pais</p>
                   <v-select
-                    v-model="select"
-                    :items="items"
+                    v-model="country"
+                    :items="contries"
                     outlined
                     dense
                   ></v-select>
@@ -65,8 +68,8 @@
                 <v-col cols="12" sm="5" class="py-0">
                   <p class="font-weight-bold ma-0">Estado</p>
                   <v-select
-                    v-model="select"
-                    :items="items"
+                    v-model="state"
+                    :items="states"
                     outlined
                     dense
                     required
@@ -79,8 +82,8 @@
                 <v-col cols="12" sm="5" class="py-0">
                   <p class="font-weight-bold ma-0">Ciudad</p>
                   <v-select
-                    v-model="select"
-                    :items="items"
+                    v-model="city"
+                    :items="cities"
                     outlined
                     dense
                   ></v-select>
@@ -88,8 +91,7 @@
                 <v-col cols="12" sm="5" class="py-0">
                   <p class="font-weight-bold ma-0">Codigo Postal</p>
                   <v-text-field
-                    v-model="name"
-                    :counter="10"
+                    v-model="zip_code"
                     outlined
                     dense
                   ></v-text-field>
@@ -100,7 +102,7 @@
                 <v-col cols="12" sm="1" class="py-0"> </v-col>
                 <v-col cols="12" sm="10" class="py-0">
                   <p class="font-weight-bold ma-0">Mensaje</p>
-                  <v-textarea v-model="select" outlined dense></v-textarea>
+                  <v-textarea v-model="comment" outlined dense></v-textarea>
                 </v-col>
 
                 <v-col cols="12" sm="1" class="py-0"></v-col>
@@ -111,7 +113,8 @@
                   :disabled="!valid"
                   color="primaryGreen"
                   class="mr-4 white--text"
-                  @click="validate"
+                  @click="createComment"
+                  :loading="loading"
                 >
                   Enviar
                 </v-btn>
@@ -233,6 +236,8 @@
 
 <script>
   import Footer from "@/components/Footer.vue";
+  import { CREATE_COMMENT } from "@/graphql/mutations";
+  import { useMutation } from "@/graphql/index";
   export default {
     name: "Contacto",
     components: {
@@ -240,7 +245,20 @@
     },
     data: () => ({
       valid: true,
-      name: "",
+      loading: false,
+      cellphone_number: "",
+      cellphoneRules: [
+        (v) => !!v || "Numero de celular requerido",
+        (v) => /^\d+$/.test(v) || "Solo digitos",
+        (v) => (v && v.length == 10) || "10 digitos",
+      ],
+      city: "",
+      comment: "",
+      country: "",
+      phone_number: "",
+      state: "",
+      zip_code: "",
+      completeName: "",
       nameRules: [
         (v) => !!v || "Nombre requerido",
         (v) => (v && v.length >= 3) || "Minimo 3 caracteres",
@@ -251,12 +269,50 @@
         (v) => /.+@.+\..+/.test(v) || "El correo debe ser valido",
       ],
       select: null,
-      items: ["Item 1", "Item 2", "Item 3", "Item 4"],
+      contries: ["Mexico", "Estados Unidos"],
+      states: ["Chihuahua", "Texas"],
+      cities: ["Chihuahua", "Juarez", "El Paso"],
       checkbox: false,
     }),
     methods: {
       validate() {
         this.$refs.form.validate();
+      },
+      resetForm() {
+        this.$refs.form.reset();
+      },
+      handleAlert({ type, message }) {
+        this.$store.dispatch("handleAlert", { type: type, message: message });
+      },
+      async createComment() {
+        if (this.$refs.form.validate()) {
+          this.loading = true;
+          const { data, errors } = await useMutation(CREATE_COMMENT, {
+            cellphone_number: this.cellphone_number,
+            city: this.city,
+            comment: this.comment,
+            country: this.country,
+            email: this.email,
+            name: this.completeName,
+            phone_number: this.phone_number,
+            state: this.state,
+            zip_code: this.zip_code,
+          });
+          if (data) {
+            this.resetForm();
+            this.handleAlert({
+              type: "success",
+              message: "Se envio correctamente tu información",
+            });
+          } else if (errors) {
+            this.handleAlert({
+              type: "error",
+              message: "Error al enviar la información",
+            });
+            console.log(errors);
+          }
+          this.loading = false;
+        }
       },
     },
   };

@@ -214,4 +214,7 @@
     height: 500px;
     margin-bottom: 3em;
   }
+  .v-list-item {
+    min-height: 0px;
+  }
 </style>

@@ -8,7 +8,9 @@
           ¿Tienes alguna duda?
         </div>
         <div class="d-flex justify-center mt-4">
-          <v-btn depressed outlined color="white"> Contactanos </v-btn>
+          <router-link :to="{ path: '/contacto' }">
+            <v-btn depressed outlined color="white"> Contactanos </v-btn>
+          </router-link>
         </div>
       </div>
     </div>
@@ -168,5 +170,9 @@
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+  }
+
+  a {
+    text-decoration: none;
   }
 </style>
