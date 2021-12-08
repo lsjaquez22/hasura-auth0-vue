@@ -1,42 +1,6 @@
 <template>
   <div>
     <div>
-      <v-carousel
-        cycle
-        height="600"
-        hide-delimiter-background
-        show-arrows-on-hover
-        :interval="10000"
-        delimiter-icon="mdi-minus"
-      >
-        <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src" />
-      </v-carousel>
-    </div>
-    <div class="my-12">
-      <div class="pt-8 text-h4 font-weight-bold d-flex justify-center">
-        Tipos de Remolques
-      </div>
-      <div class="pt-8 px-6 d-flex justify-center flex-wrap">
-        <v-card
-          class="mx-auto my-6"
-          max-width="275"
-          elevation="0"
-          v-for="trailer in trailers"
-          :key="trailer.type"
-        >
-          <v-img
-            class="rounded-lg elevation-12"
-            src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-            height="215px"
-          ></v-img>
-
-          <v-card-title class="d-flex justify-center">
-            {{ trailer.type }}
-          </v-card-title>
-        </v-card>
-      </div>
-    </div>
-    <div>
       <div
         class="py-4 text-h4 font-weight-bold d-flex justify-center primaryGreen white--text"
       >
@@ -98,7 +62,7 @@
 <script>
   import Footer from "@/components/Footer.vue";
   export default {
-    name: "Home",
+    name: "Vacantes",
     components: {
       Footer,
     },

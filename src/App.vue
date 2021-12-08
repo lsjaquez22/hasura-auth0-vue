@@ -1,55 +1,62 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
+    <v-app-bar color="white">
       <div class="d-flex align-center">
-        <v-img
+        <!-- <v-img
           alt="Vuetify Logo"
-          class="shrink mr-2"
+          class="shrink mr-2 hidden-md-and-up"
           contain
           src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
           transition="scale-transition"
           width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+        /> -->
+        <v-btn
+          depressed
+          plain
+          :ripple="false"
+          :to="{ name: 'MainPage' }"
+          class="d-flex py-10 justify-center active-class font-weight-black text-overline rounded-0"
+        >
+          <v-img
+            alt="Trasoto Logo"
+            class="shrink mt-1"
+            contain
+            eager
+            min-width="100"
+            src="../src/assets/logo-transportes-soto.png"
+            width="100"
+          />
+        </v-btn>
       </div>
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
+      <v-btn text router :to="{ path: '/' }">
+        <span class="mr-2">Inicio</span>
+      </v-btn>
+      <v-btn text router :to="{ path: '/vacantes' }">
+        <span class="mr-2">Vacantes</span>
+      </v-btn>
+      <v-btn text router :to="{ path: '/contactos' }">
+        <span class="mr-2">Contacto</span>
+      </v-btn>
+      <v-btn text>
+        <span class="mr-2">Cerrar Sesión</span>
       </v-btn>
     </v-app-bar>
 
     <v-main>
-      <router-view/>
+      <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script>
+  export default {
+    name: "App",
 
-export default {
-  name: 'App',
-
-  data: () => ({
-    //
-  }),
-};
+    data: () => ({
+      //
+    }),
+  };
 </script>
