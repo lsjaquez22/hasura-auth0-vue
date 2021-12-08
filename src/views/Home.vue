@@ -75,7 +75,7 @@
 
                 <v-card-text class="pa-0">
                   <div class="text-subtitle-1">
-                    {{ job.number }} vacantes dispnibles
+                    {{ job.number }} vacantes disponibles
                   </div>
                 </v-card-text>
               </v-card>

@@ -124,11 +124,15 @@
                   <v-list-item-title>
                     Dentro de la Republica
                   </v-list-item-title>
-                  <v-list-item-title> (880) 147-40000 </v-list-item-title>
+                  <v-list-item-title class="text-decoration-underline">
+                    (880) 147-40000
+                  </v-list-item-title>
                   <v-list-item-title class="pb-1 pt-4">
                     Dentro Estados Unidos
                   </v-list-item-title>
-                  <v-list-item-title> 1 (800) 259-8393 </v-list-item-title>
+                  <v-list-item-title class="text-decoration-underline">
+                    1 (800) 259-8393
+                  </v-list-item-title>
                   <v-list-item-title class="pb-1 pt-4">
                     <v-icon class="mx-1">mdi-facebook</v-icon>
                     <v-icon class="mx-1">mdi-linkedin</v-icon>

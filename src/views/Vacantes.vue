@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="vacantes_image"></div>
     <div>
       <div
         class="py-4 text-h4 font-weight-bold d-flex justify-center primaryGreen white--text"
@@ -7,52 +8,189 @@
         Vacantes
       </div>
       <div class="grey py-14">
-        <div class="text-h4 font-weight-bold d-flex justify-center">
-          Únete a nuestro equipo de trabajo
-        </div>
         <v-row no-gutters>
-          <v-col cols="12" sm="1" md="1" lg="1" xl="2"> </v-col>
-          <v-col cols="12" sm="10" md="10" lg="10" xl="8">
-            <div class="px-6 d-flex justify-center flex-wrap">
-              <v-card
-                v-for="job in jobs"
-                :key="job.type"
-                class="mx-auto my-12 pa-8 rounded-lg"
-                max-width="300"
-                elevation="6"
-              >
-                <template slot="progress">
-                  <v-progress-linear
-                    color="deep-purple"
-                    height="10"
-                    indeterminate
-                  ></v-progress-linear>
-                </template>
-
-                <v-img
-                  class="rounded-lg"
-                  src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-                  height="150px"
-                ></v-img>
-
-                <v-card-title class="pa-0 pt-4">{{ job.type }}</v-card-title>
-
-                <v-card-text class="pa-0">
-                  <div class="text-subtitle-1">
-                    {{ job.number }} vacantes dispnibles
-                  </div>
-                </v-card-text>
-              </v-card>
-            </div></v-col
-          >
-          <v-col cols="12" sm="1" md="1" lg="1" xl="2"> </v-col>
+          <v-col cols="12" sm="12" md="1" lg="1" xl="1"> </v-col>
+          <v-col cols="12" sm="3" md="3" lg="3" xl="3">
+            <div
+              class="text-h4 font-weight-bold d-flex justify-center justify-md-start"
+            >
+              Filtros
+            </div>
+            <v-list-item class="pa-6 pa-md-0">
+              <v-list-item-content>
+                <v-list-item-title class="text-h6 py-1 font-weight-bold">
+                  Departamentos
+                </v-list-item-title>
+                <v-list-item class="pa-1">
+                  <template v-slot:default="{ active }">
+                    <v-list-item-action class="mx-2 my-0">
+                      <v-checkbox :input-value="active"></v-checkbox>
+                    </v-list-item-action>
+                    <v-list-item-content class="pa-0">
+                      <v-list-item-title>Ventas</v-list-item-title>
+                    </v-list-item-content>
+                  </template>
+                </v-list-item>
+                <v-list-item class="pa-1">
+                  <template v-slot:default="{ active }">
+                    <v-list-item-action class="mx-2 my-0">
+                      <v-checkbox :input-value="active"></v-checkbox>
+                    </v-list-item-action>
+                    <v-list-item-content class="pa-0">
+                      <v-list-item-title>Trafico</v-list-item-title>
+                    </v-list-item-content>
+                  </template>
+                </v-list-item>
+                <v-list-item class="pa-1">
+                  <template v-slot:default="{ active }">
+                    <v-list-item-action class="mx-2 my-0">
+                      <v-checkbox :input-value="active"></v-checkbox>
+                    </v-list-item-action>
+                    <v-list-item-content class="pa-0">
+                      <v-list-item-title>Ventas</v-list-item-title>
+                    </v-list-item-content>
+                  </template>
+                </v-list-item>
+                <v-list-item class="pa-1">
+                  <template v-slot:default="{ active }">
+                    <v-list-item-action class="mx-2 my-0">
+                      <v-checkbox :input-value="active"></v-checkbox>
+                    </v-list-item-action>
+                    <v-list-item-content class="pa-0">
+                      <v-list-item-title>Trafico</v-list-item-title>
+                    </v-list-item-content>
+                  </template>
+                </v-list-item>
+                <v-list-item class="pa-1">
+                  <template v-slot:default="{ active }">
+                    <v-list-item-action class="mx-2 my-0">
+                      <v-checkbox :input-value="active"></v-checkbox>
+                    </v-list-item-action>
+                    <v-list-item-content class="pa-0">
+                      <v-list-item-title>Ventas</v-list-item-title>
+                    </v-list-item-content>
+                  </template>
+                </v-list-item>
+                <v-list-item class="pa-1">
+                  <template v-slot:default="{ active }">
+                    <v-list-item-action class="mx-2 my-0">
+                      <v-checkbox :input-value="active"></v-checkbox>
+                    </v-list-item-action>
+                    <v-list-item-content class="pa-0">
+                      <v-list-item-title>Trafico</v-list-item-title>
+                    </v-list-item-content>
+                  </template>
+                </v-list-item>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item class="pa-6 pa-md-0">
+              <v-list-item-content>
+                <v-list-item-title class="text-h6 py-1 font-weight-bold">
+                  Ubicacion
+                </v-list-item-title>
+                <v-list-item class="pa-1">
+                  <template v-slot:default="{ active }">
+                    <v-list-item-action class="mx-2 my-0">
+                      <v-checkbox :input-value="active"></v-checkbox>
+                    </v-list-item-action>
+                    <v-list-item-content class="pa-0">
+                      <v-list-item-title>Chihuahua</v-list-item-title>
+                    </v-list-item-content>
+                  </template>
+                </v-list-item>
+                <v-list-item class="pa-1">
+                  <template v-slot:default="{ active }">
+                    <v-list-item-action class="mx-2 my-0">
+                      <v-checkbox :input-value="active"></v-checkbox>
+                    </v-list-item-action>
+                    <v-list-item-content class="pa-0">
+                      <v-list-item-title>Ciudad Juarez</v-list-item-title>
+                    </v-list-item-content>
+                  </template>
+                </v-list-item>
+                <v-list-item class="pa-1">
+                  <template v-slot:default="{ active }">
+                    <v-list-item-action class="mx-2 my-0">
+                      <v-checkbox :input-value="active"></v-checkbox>
+                    </v-list-item-action>
+                    <v-list-item-content class="pa-0">
+                      <v-list-item-title>El paso</v-list-item-title>
+                    </v-list-item-content>
+                  </template>
+                </v-list-item>
+              </v-list-item-content>
+            </v-list-item>
+            <div class="mt-4">
+              <v-btn small depressed outlined color="secondaryGreen">
+                Limpiar Filtros
+              </v-btn>
+            </div>
+          </v-col>
+          <v-col cols="12" sm="9" md="7" lg="7" xl="7">
+            <div
+              class="text-h4 font-weight-bold d-flex justify-center justify-md-start"
+            >
+              Todas las vacantes
+            </div>
+            <v-list-item class="pa-6 pa-md-0">
+              <v-list-item-content>
+                <v-list-item-title
+                  class="text-h6 py-1 text-decoration-underline secondaryGreen--text"
+                >
+                  Ejecutivo de Ventas
+                </v-list-item-title>
+                <v-list-item-title class="d-flex flex-column flex-md-row">
+                  <div class="mr-8">El Paso, Tx.</div>
+                  <div class="mr-8">Fecha de publicación: 30/03/2020</div>
+                  <div class="mr-8">Vigencia: 30/03/2020</div>
+                </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item class="pa-6 pa-md-0">
+              <v-list-item-content>
+                <v-list-item-title
+                  class="text-h6 py-1 text-decoration-underline secondaryGreen--text"
+                >
+                  Ejecutivo de Ventas
+                </v-list-item-title>
+                <v-list-item-title class="d-flex flex-column flex-md-row">
+                  <div class="mr-8">Chihuahua, Chih.</div>
+                  <div class="mr-8">Fecha de publicación: 30/03/2020</div>
+                  <div class="mr-8">Vigencia: 30/03/2020</div>
+                </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item class="pa-6 pa-md-0">
+              <v-list-item-content>
+                <v-list-item-title
+                  class="text-h6 py-1 text-decoration-underline secondaryGreen--text"
+                >
+                  Ejecutivo de Ventas
+                </v-list-item-title>
+                <v-list-item-title class="d-flex flex-column flex-md-row">
+                  <div class="mr-8">Chihuahua, Chih.</div>
+                  <div class="mr-8">Fecha de publicación: 30/03/2020</div>
+                  <div class="mr-8">Vigencia: 30/03/2020</div>
+                </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item class="pa-6 pa-md-0">
+              <v-list-item-content>
+                <v-list-item-title
+                  class="text-h6 py-1 text-decoration-underline secondaryGreen--text"
+                >
+                  Ejecutivo de Ventas
+                </v-list-item-title>
+                <v-list-item-title class="d-flex flex-column flex-md-row">
+                  <div class="mr-8">Ciudad Juarez, Chih.</div>
+                  <div class="mr-8">Fecha de publicación: 30/03/2020</div>
+                  <div class="mr-8">Vigencia: 30/03/2020</div>
+                </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-col>
+          <v-col cols="12" sm="12" md="1" lg="1" xl="1"> </v-col>
         </v-row>
-
-        <div class="d-flex justify-center">
-          <v-btn depressed outlined color="secondaryGreen">
-            Ver todas las vacantes
-          </v-btn>
-        </div>
       </div>
     </div>
     <Footer />
@@ -97,3 +235,12 @@
     },
   };
 </script>
+
+<style scoped>
+  .vacantes_image {
+    background: url("https://cdn.vuetifyjs.com/images/cards/sunshine.jpg");
+    background-size: cover;
+    height: 500px;
+    margin-bottom: 3em;
+  }
+</style>
