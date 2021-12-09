@@ -11,6 +11,7 @@
           min-width="100"
           src="../assets/logo-transportes-soto.png"
           width="100"
+          height="200"
         />
       </router-link>
 

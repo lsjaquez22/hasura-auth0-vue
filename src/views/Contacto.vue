@@ -81,12 +81,7 @@
                 <v-col cols="12" sm="1" class="py-0"> </v-col>
                 <v-col cols="12" sm="5" class="py-0">
                   <p class="font-weight-bold ma-0">Ciudad</p>
-                  <v-select
-                    v-model="city"
-                    :items="cities"
-                    outlined
-                    dense
-                  ></v-select>
+                  <v-text-field v-model="city" outlined dense></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="5" class="py-0">
                   <p class="font-weight-bold ma-0">Codigo Postal</p>
@@ -270,10 +265,20 @@
       ],
       select: null,
       contries: ["Mexico", "Estados Unidos"],
-      states: ["Chihuahua", "Texas"],
       cities: ["Chihuahua", "Juarez", "El Paso"],
       checkbox: false,
     }),
+    computed: {
+      states() {
+        if (this.country === "Mexico") {
+          return ["Chihuahua", "Sonora", "Baja California", "Nuevo Leon"];
+        } else if (this.country === "Estados Unidos") {
+          return ["Texas", "Nuevo Mexico", "Arizona", "California"];
+        } else {
+          return [];
+        }
+      },
+    },
     methods: {
       validate() {
         this.$refs.form.validate();
