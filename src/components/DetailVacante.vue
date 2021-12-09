@@ -23,7 +23,9 @@
                 </v-list-item-title>
                 <v-list-item class="pa-1">
                   <v-list-item-content class="pa-0">
-                    <v-list-item-title>Ventas</v-list-item-title>
+                    <v-list-item-title>
+                      {{ vacante.department }}
+                    </v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
               </v-list-item-content>
@@ -35,7 +37,9 @@
                 </v-list-item-title>
                 <v-list-item class="pa-1">
                   <v-list-item-content class="pa-0">
-                    <v-list-item-title>Chihuahua</v-list-item-title>
+                    <v-list-item-title>
+                      {{ vacante.location }}
+                    </v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
               </v-list-item-content>
@@ -47,7 +51,9 @@
                 </v-list-item-title>
                 <v-list-item class="pa-1">
                   <v-list-item-content class="pa-0">
-                    <v-list-item-title>30/02/20</v-list-item-title>
+                    <v-list-item-title>
+                      {{ vacante.created_at.substring(0, 10) }}
+                    </v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
               </v-list-item-content>
@@ -59,7 +65,9 @@
                 </v-list-item-title>
                 <v-list-item class="pa-1">
                   <v-list-item-content class="pa-0">
-                    <v-list-item-title>30/02/20</v-list-item-title>
+                    <v-list-item-title>
+                      {{ vacante.expired_at.substring(0, 10) }}
+                    </v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
               </v-list-item-content>
@@ -69,7 +77,7 @@
             <div
               class="text-h4 font-weight-bold d-flex justify-center justify-md-start"
             >
-              Ejecutio de Ventas
+              {{ vacante.name }}
             </div>
             <v-list-item class="pa-6 pa-md-0">
               <v-list-item-content>
@@ -78,10 +86,7 @@
                 </v-list-item-title>
                 <v-list-item-content>
                   <div>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Saepe iste fugiat dignissimos quas quia magnam nemo in quo,
-                    cum omnis veniam obcaecati iure eaque corrupti, vero
-                    perspiciatis voluptatibus impedit repellendus?
+                    {{ vacante.description }}
                   </div>
                 </v-list-item-content>
               </v-list-item-content>
@@ -93,14 +98,8 @@
                 </v-list-item-title>
                 <v-list-item-content>
                   <ul>
-                    <li>something</li>
-                    <li>something</li>
-                    <li>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Tenetur itaque nisi molestiae cumque harum minus? Neque
-                      vel quae odit assumenda esse architecto expedita ipsum
-                      pariatur recusandae. Accusantium fugiat illo
-                      exercitationem.
+                    <li v-for="item in vacante.requirements" :key="item.id">
+                      {{ item.description }}
                     </li>
                   </ul>
                 </v-list-item-content>
@@ -113,14 +112,8 @@
                 </v-list-item-title>
                 <v-list-item-content>
                   <ul>
-                    <li>something</li>
-                    <li>something</li>
-                    <li>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Tenetur itaque nisi molestiae cumque harum minus? Neque
-                      vel quae odit assumenda esse architecto expedita ipsum
-                      pariatur recusandae. Accusantium fugiat illo
-                      exercitationem.
+                    <li v-for="item in vacante.experiences" :key="item.id">
+                      {{ item.description }}
                     </li>
                   </ul>
                 </v-list-item-content>
@@ -133,14 +126,8 @@
                 </v-list-item-title>
                 <v-list-item-content>
                   <ul>
-                    <li>something</li>
-                    <li>something</li>
-                    <li>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Tenetur itaque nisi molestiae cumque harum minus? Neque
-                      vel quae odit assumenda esse architecto expedita ipsum
-                      pariatur recusandae. Accusantium fugiat illo
-                      exercitationem.
+                    <li v-for="item in vacante.abilities" :key="item.id">
+                      {{ item.description }}
                     </li>
                   </ul>
                 </v-list-item-content>
@@ -153,7 +140,9 @@
                 </v-list-item-title>
                 <v-list-item-content>
                   <ul>
-                    <li>Ingles</li>
+                    <li>
+                      {{ vacante.language }}
+                    </li>
                   </ul>
                 </v-list-item-content>
               </v-list-item-content>
@@ -170,7 +159,7 @@
           <v-row no-gutters>
             <v-col cols="1" sm="1" md="2" lg="3" xl="3"> </v-col>
             <v-col cols="10" sm="10" md="8" lg="6" xl="6">
-              <v-form ref="form" v-model="valid" lazy-validation>
+              <v-form ref="form" lazy-validation>
                 <v-row class="ma-0">
                   <v-col cols="12" sm="1" class="py-0"> </v-col>
                   <v-col cols="12" sm="5" class="py-0">
@@ -235,9 +224,15 @@
 <script>
   export default {
     name: "DetailVacantes",
+    props: {
+      vacante: {
+        type: Object,
+        require: true,
+      },
+    },
     methods: {
       handleDetail() {
-        this.$emit("handleDetail");
+        this.$emit("handleDetail", {});
       },
     },
   };

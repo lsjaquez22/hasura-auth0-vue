@@ -126,63 +126,30 @@
             >
               Todas las vacantes
             </div>
-            <v-list-item class="pa-6 pa-md-0">
+            <v-list-item
+              v-for="element in list"
+              :key="element.id"
+              class="pa-6 pa-md-0"
+            >
               <v-list-item-content>
                 <v-list-item-title class="text-h6 py-1">
                   <v-btn
                     text
-                    @click="handleDetail"
+                    @click="handleDetail(element)"
                     class="text-h6 text-none text-decoration-underline secondaryGreen--text"
                   >
-                    Ejecutivo de Ventas
+                    {{ element.name }}
                   </v-btn>
                 </v-list-item-title>
                 <v-list-item-title class="d-flex flex-column flex-md-row">
-                  <div class="mr-8">El Paso, Tx.</div>
-                  <div class="mr-8">Fecha de publicación: 30/03/2020</div>
-                  <div class="mr-8">Vigencia: 30/03/2020</div>
-                </v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item class="pa-6 pa-md-0">
-              <v-list-item-content>
-                <v-list-item-title
-                  class="text-h6 py-1 text-decoration-underline secondaryGreen--text"
-                >
-                  Ejecutivo de Ventas
-                </v-list-item-title>
-                <v-list-item-title class="d-flex flex-column flex-md-row">
-                  <div class="mr-8">Chihuahua, Chih.</div>
-                  <div class="mr-8">Fecha de publicación: 30/03/2020</div>
-                  <div class="mr-8">Vigencia: 30/03/2020</div>
-                </v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item class="pa-6 pa-md-0">
-              <v-list-item-content>
-                <v-list-item-title
-                  class="text-h6 py-1 text-decoration-underline secondaryGreen--text"
-                >
-                  Ejecutivo de Ventas
-                </v-list-item-title>
-                <v-list-item-title class="d-flex flex-column flex-md-row">
-                  <div class="mr-8">Chihuahua, Chih.</div>
-                  <div class="mr-8">Fecha de publicación: 30/03/2020</div>
-                  <div class="mr-8">Vigencia: 30/03/2020</div>
-                </v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item class="pa-6 pa-md-0">
-              <v-list-item-content>
-                <v-list-item-title
-                  class="text-h6 py-1 text-decoration-underline secondaryGreen--text"
-                >
-                  Ejecutivo de Ventas
-                </v-list-item-title>
-                <v-list-item-title class="d-flex flex-column flex-md-row">
-                  <div class="mr-8">Ciudad Juarez, Chih.</div>
-                  <div class="mr-8">Fecha de publicación: 30/03/2020</div>
-                  <div class="mr-8">Vigencia: 30/03/2020</div>
+                  <div class="mr-8">{{ element.location }}</div>
+                  <div class="mr-8">
+                    Fecha de publicación:
+                    {{ element.created_at.substring(0, 10) }}
+                  </div>
+                  <div class="mr-8">
+                    Vigencia: {{ element.expired_at.substring(0, 10) }}
+                  </div>
                 </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
@@ -197,9 +164,15 @@
 <script>
   export default {
     name: "ListVacantes",
+    props: {
+      list: {
+        type: Array,
+        require: true,
+      },
+    },
     methods: {
-      handleDetail() {
-        this.$emit("handleDetail");
+      handleDetail(element) {
+        this.$emit("handleDetail", element);
       },
     },
   };

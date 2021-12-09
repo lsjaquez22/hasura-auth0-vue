@@ -7,8 +7,12 @@
       >
         Vacantes
       </div>
-      <ListVacantes v-if="!details" @handleDetail="handleDetail" />
-      <DetailVacante v-else @handleDetail="handleDetail" />
+      <ListVacantes
+        v-if="!details"
+        @handleDetail="handleDetail"
+        :list="listVacantes"
+      />
+      <DetailVacante v-else @handleDetail="handleDetail" :vacante="vacante" />
     </div>
     <Footer />
   </div>
@@ -18,6 +22,9 @@
   import Footer from "@/components/Footer.vue";
   import ListVacantes from "../components/ListVacantes.vue";
   import DetailVacante from "../components/DetailVacante.vue";
+  import { GET_JOBS_VACANVIES } from "@/graphql/queries";
+  import { useQuery } from "@/graphql/index";
+
   export default {
     name: "Vacantes",
     components: {
@@ -25,14 +32,26 @@
       ListVacantes,
       DetailVacante,
     },
+    async created() {
+      const { data, errors } = await useQuery(GET_JOBS_VACANVIES, {});
+      if (data) {
+        this.listVacantes = data.job_vacancies;
+        console.log(data.job_vacancies);
+        // this.$store.dispatch("getMovies", data.movies);
+      } else if (errors) {
+        console.log(errors);
+      }
+    },
     data() {
       return {
-        details: true,
+        details: false,
         vacante: {},
+        listVacantes: [],
       };
     },
     methods: {
-      handleDetail() {
+      handleDetail(vacante) {
+        this.vacante = vacante;
         this.details = !this.details;
       },
     },
