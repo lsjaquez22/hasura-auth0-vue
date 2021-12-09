@@ -26,7 +26,7 @@
       <v-btn text router :to="{ path: '/contacto' }">
         <span class="mr-2">Contacto</span>
       </v-btn>
-      <v-btn text>
+      <v-btn text @click="logout">
         <span class="mr-2">Cerrar Sesión</span>
       </v-btn>
     </v-app-bar>
@@ -40,6 +40,13 @@
     data: () => ({
       //
     }),
+    methods: {
+      logout() {
+        this.$auth.logout({
+          returnTo: window.location.origin,
+        });
+      },
+    },
   };
 </script>
 

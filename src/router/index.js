@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import { authGuard } from "../auth/authGuard";
 
 Vue.use(VueRouter);
 
@@ -8,6 +9,7 @@ const routes = [
     path: "/",
     name: "Home",
     component: () => import(/* webpackChunkName: "Home" */ "../views/Home.vue"),
+    beforeEnter: authGuard,
   },
   {
     path: "/vacantes",
@@ -17,6 +19,7 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "vacantes" */ "../views/Vacantes.vue"),
+    beforeEnter: authGuard,
   },
   {
     path: "/contacto",
@@ -26,6 +29,7 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "contacto" */ "../views/Contacto.vue"),
+    beforeEnter: authGuard,
   },
 ];
 
