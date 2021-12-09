@@ -126,33 +126,44 @@
             >
               Todas las vacantes
             </div>
-            <v-list-item
-              v-for="element in list"
-              :key="element.id"
-              class="pa-6 pa-md-0"
+            <div
+              v-if="loading"
+              class="d-flex justify-center justify-md-start ml-0 ml-md-8 my-8"
             >
-              <v-list-item-content>
-                <v-list-item-title class="text-h6 py-1">
-                  <v-btn
-                    text
-                    @click="handleDetail(element)"
-                    class="text-h6 text-none text-decoration-underline secondaryGreen--text"
-                  >
-                    {{ element.name }}
-                  </v-btn>
-                </v-list-item-title>
-                <v-list-item-title class="d-flex flex-column flex-md-row">
-                  <div class="mr-8">{{ element.location }}</div>
-                  <div class="mr-8">
-                    Fecha de publicación:
-                    {{ element.created_at.substring(0, 10) }}
-                  </div>
-                  <div class="mr-8">
-                    Vigencia: {{ element.expired_at.substring(0, 10) }}
-                  </div>
-                </v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
+              <v-progress-circular
+                indeterminate
+                color="primaryGreen"
+              ></v-progress-circular>
+            </div>
+            <div v-else>
+              <v-list-item
+                v-for="element in list"
+                :key="element.id"
+                class="pa-6 pa-md-0"
+              >
+                <v-list-item-content>
+                  <v-list-item-title class="text-h6 py-1">
+                    <v-btn
+                      text
+                      @click="handleDetail(element)"
+                      class="text-h6 text-none text-decoration-underline secondaryGreen--text"
+                    >
+                      {{ element.name }}
+                    </v-btn>
+                  </v-list-item-title>
+                  <v-list-item-title class="d-flex flex-column flex-md-row">
+                    <div class="mr-8">{{ element.location }}</div>
+                    <div class="mr-8">
+                      Fecha de publicación:
+                      {{ element.created_at.substring(0, 10) }}
+                    </div>
+                    <div class="mr-8">
+                      Vigencia: {{ element.expired_at.substring(0, 10) }}
+                    </div>
+                  </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </div>
           </v-col>
           <v-col cols="12" sm="12" md="1" lg="1" xl="1"> </v-col>
         </v-row>
@@ -168,6 +179,15 @@
       list: {
         type: Array,
         require: true,
+      },
+    },
+    computed: {
+      loading() {
+        if (this.list.length === 0) {
+          return true;
+        } else {
+          return false;
+        }
       },
     },
     methods: {

@@ -26,7 +26,7 @@
         >
           <v-img
             class="rounded-lg elevation-12"
-            src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+            :src="trailer.image"
             height="215px"
           ></v-img>
 
@@ -67,7 +67,7 @@
 
                 <v-img
                   class="rounded-lg"
-                  src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+                  :src="job.image"
                   height="150px"
                 ></v-img>
 
@@ -111,28 +111,40 @@
       return {
         items: [
           {
-            src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+            src: require("../assets/trailer_1.jpg"),
           },
           {
-            src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
+            src: require("../assets/trailer_2.jpg"),
           },
           {
-            src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
+            src: require("../assets/trailer_3.jpg"),
           },
           {
-            src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
+            src: require("../assets/trailer_4.jpg"),
           },
         ],
         trailers: [
-          { type: "Caja Seca", image: "" },
-          { type: "Plataforma", image: "" },
-          { type: "Low Boy", image: "" },
-          { type: "Caja Refrigerada", image: "" },
+          { type: "Caja Seca", image: require("../assets/caja_4.jpg") },
+          { type: "Plataforma", image: require("../assets/caja_1.jpg") },
+          { type: "Low Boy", image: require("../assets/caja_3.jpg") },
+          { type: "Caja Refrigerada", image: require("../assets/caja_2.jpg") },
         ],
         jobs: [
-          { type: "Ventas", image: "", number: 30 },
-          { type: "Operadores", image: "", number: 30 },
-          { type: "Mantenimiento", image: "", number: 30 },
+          {
+            type: "Ventas",
+            image: require("../assets/ventas.png"),
+            number: 30,
+          },
+          {
+            type: "Operadores",
+            image: require("../assets/operador.jpg"),
+            number: 30,
+          },
+          {
+            type: "Mantenimiento",
+            image: require("../assets/mantenimiento.jpg"),
+            number: 30,
+          },
         ],
       };
     },

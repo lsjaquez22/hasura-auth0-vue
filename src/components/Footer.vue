@@ -159,7 +159,7 @@
 
 <style scoped>
   .footer_container {
-    background: url("https://cdn.vuetifyjs.com/images/cards/sunshine.jpg");
+    background: url("~@/assets/service.jpg");
     background-size: cover;
     height: 400px;
     position: relative;

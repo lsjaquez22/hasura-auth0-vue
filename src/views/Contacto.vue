@@ -138,7 +138,7 @@
               >
                 <v-img
                   class="rounded-lg elevation-12"
-                  src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+                  src="../assets/location_1.jpg"
                   height="150px"
                 ></v-img>
 
@@ -169,7 +169,7 @@
               >
                 <v-img
                   class="rounded-lg elevation-12"
-                  src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+                  src="../assets/location_2.jpg"
                   height="150px"
                 ></v-img>
 
@@ -200,7 +200,7 @@
               >
                 <v-img
                   class="rounded-lg elevation-12"
-                  src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+                  src="../assets/location_3.jpg"
                   height="150px"
                 ></v-img>
 

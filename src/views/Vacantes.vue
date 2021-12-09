@@ -35,6 +35,7 @@
     async created() {
       const { data, errors } = await useQuery(GET_JOBS_VACANVIES, {});
       if (data) {
+        this.loading = false;
         this.listVacantes = data.job_vacancies;
         console.log(data.job_vacancies);
         // this.$store.dispatch("getMovies", data.movies);
@@ -47,6 +48,7 @@
         details: false,
         vacante: {},
         listVacantes: [],
+        loading: false,
       };
     },
     methods: {
@@ -60,7 +62,7 @@
 
 <style scoped>
   .vacantes_image {
-    background: url("https://cdn.vuetifyjs.com/images/cards/sunshine.jpg");
+    background: url("~@/assets/vacante.jpg");
     background-size: cover;
     height: 500px;
     margin-bottom: 3em;
