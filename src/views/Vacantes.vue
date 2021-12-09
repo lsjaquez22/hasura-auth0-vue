@@ -37,7 +37,6 @@
       if (data) {
         this.loading = false;
         this.listVacantes = data.job_vacancies;
-        console.log(data.job_vacancies);
         // this.$store.dispatch("getMovies", data.movies);
       } else if (errors) {
         console.log(errors);
