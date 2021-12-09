@@ -46,9 +46,11 @@
               <div class="py-4 text-h6 font-weight-bold">Vacantes</div>
               <v-list-item class="pa-0">
                 <v-list-item-content>
-                  <v-list-item-title class="py-1">
-                    Buscar vacantes
-                  </v-list-item-title>
+                  <router-link :to="{ path: '/vacantes' }">
+                    <v-list-item-title class="py-1 black--text">
+                      Buscar vacantes
+                    </v-list-item-title>
+                  </router-link>
                   <v-list-item-title class="py-1">
                     Editar vacantas
                   </v-list-item-title>

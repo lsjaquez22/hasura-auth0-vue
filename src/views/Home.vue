@@ -85,7 +85,12 @@
         </v-row>
 
         <div class="d-flex justify-center">
-          <v-btn depressed outlined color="secondaryGreen">
+          <v-btn
+            depressed
+            outlined
+            color="secondaryGreen"
+            :to="{ path: '/vacantes' }"
+          >
             Ver todas las vacantes
           </v-btn>
         </div>
